@@ -78,14 +78,14 @@ public class TradeListener implements Listener, ChatButtonListener {
 
     @EventHandler
     public void onPickup(PlayerPickupItemEvent e) {
-        Player p = e.getPlayer();
-        Trade t = TradeSystem.handler().getTrade(p);
-
+           Player p = e.getPlayer();
+           Trade t = TradeSystem.handler().getTrade(p);
+     
         if (t != null) {
-            Perspective perspective = t.getPerspective(p);
-            if (!TradeSystem.handler().isDropItems()) {
-                //does it fit?
-                if (t.doesNotFit(perspective, e.getItem().getItemStack())) e.setCancelled(true);
+          Perspective perspective = t.getPerspective(p);
+          if (!TradeSystem.handler().isDropItems()) {
+               if (t.doesNotFit(perspective, e.getItem().getItemStack())) {
+                e.setCancelled(true);
             }
         }
     }
